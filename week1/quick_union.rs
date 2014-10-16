@@ -82,6 +82,19 @@ impl UF {
 
     *self.vec.get_mut(i) = j
   }
+
+  /// Shows `vec`.
+  ///
+  /// # Example
+  ///
+  /// ```
+  /// let mut uf = UF::new(10);
+  /// uf.union(4, 5);
+  /// println!("{}", uf.show_vec());
+  /// ```
+  fn show_vec(&self) -> () {
+    println!("{}", self.vec)
+  }
 }
 
 fn main() {

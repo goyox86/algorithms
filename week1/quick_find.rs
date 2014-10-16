@@ -63,13 +63,32 @@ impl UF {
       }
     }
   }
+
+  /// Shows `vec`.
+  ///
+  /// # Example
+  ///
+  /// ```
+  /// let mut uf = UF::new(10);
+  /// uf.union(4, 5);
+  /// println!("{}", uf.show_vec());
+  /// ```
+  fn show_vec(&self) -> () {
+    println!("{}", self.vec)
+  }
 }
 
 fn main() {
-  let mut uf = UF::new(6);
-  uf.union(4, 5);
+  let mut uf = UF::new(10);
 
-  assert_eq!(true, uf.connected(4, 5))
-  assert_eq!(true, uf.connected(1, 1))
-  assert_eq!(false, uf.connected(2, 5))
+  uf.union(9,3);
+  uf.union(9,8);
+  uf.union(5,8);
+  uf.union(7,1);
+  uf.union(2,8);
+  uf.union(8,0);
+
+  assert_eq!(true, uf.connected(9, 3))
+  assert_eq!(true, uf.connected(5, 8))
+  assert_eq!(true, uf.connected(2, 5))
 }

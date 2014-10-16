@@ -18,6 +18,8 @@ root of the taller tree.
 
 */
 
+#![feature(slicing_syntax)]
+
 struct UF {
   vec: Vec<uint>,
   sizes: Vec<uint>
@@ -55,7 +57,7 @@ impl UF {
     let mut j = i;
 
     while j != self.vec[j] {
-      j = self.vec[j]
+      j = self.vec[j];
     }
 
     j
@@ -87,26 +89,57 @@ impl UF {
     let i = self.root(p);
     let j = self.root(q);
 
-    if i == j { return }
+    if i == j { return };
 
     if self.sizes[i] < self.sizes[j] {
-      *self.vec.get_mut(i) = j;
-      *self.sizes.get_mut(j) += self.sizes[i];
+      self.vec[mut][i] = j;
+      self.sizes[mut][j] += self.sizes[i];
     } else {
-      *self.vec.get_mut(j) = i;
-      *self.sizes.get_mut(i) += self.sizes[j];
+      self.vec[mut][j] = i;
+      self.sizes[mut][i] += self.sizes[j];
     }
+  }
+
+  /// Shows `vec`.
+  ///
+  /// # Example
+  ///
+  /// ```
+  /// let mut uf = UF::new(10);
+  /// uf.union(4, 5);
+  /// println!("{}", uf.show_vec());
+  /// ```
+  fn show_vec(&self) -> () {
+    println!("{}", self.vec)
+  }
+
+  /// Shows `sizes`.
+  ///
+  /// # Example
+  ///
+  /// ```
+  /// let mut uf = UF::new(10);
+  /// uf.union(4, 5);
+  /// println!("{}", uf.show_sizes());
+  /// ```
+  fn show_sizes(&self) -> () {
+    println!("{}", self.sizes)
   }
 }
 
 fn main() {
   let mut uf = UF::new(10);
-  uf.union(4, 5);
-  uf.union(6, 7);
-  uf.union(4, 6);
+  uf.union(4,1);
+  uf.union(6,8);
+  uf.union(0,9);
+  uf.union(0,7);
+  uf.union(5,7);
+  uf.union(3,5);
+  uf.union(4,6);
+  uf.union(1,0);
+  uf.union(9,2);
 
-  assert_eq!(true, uf.connected(4, 5))
-  assert_eq!(true, uf.connected(1, 1))
-  assert_eq!(true, uf.connected(7, 4))
-  assert_eq!(false, uf.connected(2, 5))
+  assert_eq!(true, uf.connected(4, 1));
+  assert_eq!(true, uf.connected(6, 8));
+  assert_eq!(true, uf.connected(7, 5));
 }
