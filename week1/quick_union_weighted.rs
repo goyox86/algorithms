@@ -38,7 +38,7 @@ impl UF {
   fn new(n: uint) -> UF {
     UF {
       vec: Vec::from_fn(n, |idx| idx),
-      sizes: Vec::from_fn(n, |idx| idx)
+      sizes: Vec::from_fn(n, |idx| 1)
     }
   }
 
