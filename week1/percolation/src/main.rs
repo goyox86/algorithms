@@ -21,6 +21,8 @@ extern crate uf;
 
 use std::rand;
 use std::rand::Rng;
+use std::iter::range_inclusive;
+
 use uf::UF;
 
 struct Percolation {
@@ -39,14 +41,14 @@ impl Percolation {
 
     //building the 'top' virtual site.
     let top_left = obj.index_of(1, 1);
-    for i in range(1u, obj.n + 1) {
+    for i in range_inclusive(1u, obj.n) {
       let q = obj.index_of(i, 1);
       obj.uf.union(top_left, q)
     }
 
     //building the 'bottom' virtual site.
     let bottom_left = obj.index_of(1, obj.n);
-    for i in range(1u, obj.n + 1) {
+    for i in range_inclusive(1u, obj.n) {
       let q = obj.index_of(i, obj.n);
       obj.uf.union(bottom_left, q)
     }
@@ -123,7 +125,7 @@ impl Percolation {
 
   fn percolates(&mut self) -> bool {
     let n = self.n;
-    for i in range(1u, n + 1) {
+    for i in range_inclusive(1u, n) {
       let is_full = self.is_full(i, n);
       if is_full  { return true }
     }
