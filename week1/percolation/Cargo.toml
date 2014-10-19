@@ -1,0 +1,8 @@
+[package]
+
+name = "percolation"
+version = "0.0.1"
+authors = ["Jose Narvaez <goyox86@gmail.com>"]
+
+[dependencies.uf]
+path = "../uf"

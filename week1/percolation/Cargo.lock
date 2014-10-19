@@ -1,0 +1,11 @@
+[root]
+name = "percolation"
+version = "0.0.1"
+dependencies = [
+ "uf 0.0.1",
+]
+
+[[package]]
+name = "uf"
+version = "0.0.1"
+

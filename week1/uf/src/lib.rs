@@ -122,24 +122,7 @@ impl UF {
   /// uf.union(4, 5);
   /// println!("{}", uf.show_sizes());
   /// ```
-  fn show_sizes(&self) -> () {
+  pub fn show_sizes(&self) -> () {
     println!("{}", self.sizes)
   }
-}
-
-fn main() {
-  let mut uf = UF::new(10);
-  uf.union(4,1);
-  uf.union(6,8);
-  uf.union(0,9);
-  uf.union(0,7);
-  uf.union(5,7);
-  uf.union(3,5);
-  uf.union(4,6);
-  uf.union(1,0);
-  uf.union(9,2);
-
-  assert_eq!(true, uf.connected(4, 1));
-  assert_eq!(true, uf.connected(6, 8));
-  assert_eq!(true, uf.connected(7, 5));
 }
