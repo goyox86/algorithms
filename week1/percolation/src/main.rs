@@ -37,10 +37,18 @@ impl Percolation {
       uf: UF::new(n * n)
     };
 
+    //building the 'top' virtual site.
     let top_left = obj.index_of(1, 1);
     for i in range(1u, obj.n + 1) {
       let q = obj.index_of(i, 1);
       obj.uf.union(top_left, q)
+    }
+
+    //building the 'bottom' virtual site.
+    let bottom_left = obj.index_of(1, obj.n);
+    for i in range(1u, obj.n + 1) {
+      let q = obj.index_of(i, obj.n);
+      obj.uf.union(bottom_left, q)
     }
 
     obj
