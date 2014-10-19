@@ -122,7 +122,7 @@ impl UF {
   /// uf.union(4, 5);
   /// println!("{}", uf.show_sizes());
   /// ```
-  fn show_sizes(&self) -> () {
+  pub fn show_sizes(&self) -> () {
     println!("{}", self.sizes)
   }
 }
