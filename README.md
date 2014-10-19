@@ -1,4 +1,4 @@
-algorithms
+Algorithms
 ==========
 
-Algo implementations from Coursera "Algorithms I" Course
+Algo implementations from Coursera "Algorithms I" Course.
